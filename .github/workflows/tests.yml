@@ -20,7 +20,23 @@ jobs:
       - name: Install dependencies
         run: |
           pytest --alluredir=allure-results
-
+          
+      - name: Install Google Chrome
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -fy install
+          
+      - name: Install ChromeDriver
+        run: |
+          sudo apt-get install -yqq unzip
+          LATEST=$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${LATEST}/chromedriver_linux64.zip
+          sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+          chromedriver --version
+          
+      - name: Run tests with Allure
+        run: |
+          pytest --alluredir=allure-results
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
