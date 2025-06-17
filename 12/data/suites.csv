@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","0","test_github_issue_exists","tests","Tue Jun 17 16:04:15 GMT 2025","broken","Tue Jun 17 16:04:15 GMT 2025","","test_with_allure_step","",""
+"","0","test_github_issue_exists","tests","Tue Jun 17 16:04:13 GMT 2025","broken","Tue Jun 17 16:04:13 GMT 2025","","test_search_issue_without_allure","",""
+"Тест проверяет наличие issue с заголовком ""for test"" в репозитории juliSavitskaya/qa_guru_hw_8 через пользовательский UI GitHub","0","Проверка существования issue в репозитории","tests","Tue Jun 17 16:04:14 GMT 2025","broken","Tue Jun 17 16:04:14 GMT 2025","","test_with_allure_decorator","",""
