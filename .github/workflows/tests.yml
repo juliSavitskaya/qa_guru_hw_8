@@ -19,17 +19,16 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Google Chrome
+      - name: Install Google Chrome 114
         run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -fy install
+          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_114.0.5735.90-1_amd64.deb
+          sudo dpkg -i google-chrome-stable_114.0.5735.90-1_amd64.deb || sudo apt-get -fy install
 
-      - name: Install ChromeDriver
+      - name: Install ChromeDriver 114
         run: |
-          sudo apt-get install -yqq unzip
-          LATEST=$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${LATEST}/chromedriver_linux64.zip
-          sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+          wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+          unzip /tmp/chromedriver.zip -d /tmp/
+          sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
           chromedriver --version
 
       - name: Install dependencies
