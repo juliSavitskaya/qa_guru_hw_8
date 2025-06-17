@@ -38,11 +38,11 @@ def open_github_main(browser):
 
 @allure.step('Поиск репозитория "{repo}"')
 def search_repository(browser, repo):
-    search_button = WebDriverWait(browser, 10).until(
+    search_button = WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, "button.header-search-button"))
     )
     search_button.click()
-    search_input = WebDriverWait(browser, 10).until(
+    search_input = WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.ID, "query-builder-test"))
     )
     search_input.send_keys(repo)
@@ -51,7 +51,7 @@ def search_repository(browser, repo):
 
 @allure.step('Клик на ссылку найденного репозитория "{repo}"')
 def click_repository_link(browser, repo):
-    repo_link = WebDriverWait(browser, 10).until(
+    repo_link = WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.LINK_TEXT, repo))
     )
     repo_link.click()
@@ -59,7 +59,7 @@ def click_repository_link(browser, repo):
 
 @allure.step('Переход на вкладку Issues')
 def go_to_issues_tab(browser):
-    issues_tab = WebDriverWait(browser, 10).until(
+    issues_tab = WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.ID, "issues-tab"))
     )
     issues_tab.click()
@@ -67,7 +67,7 @@ def go_to_issues_tab(browser):
 
 @allure.step('Проверить, что заголовок issue равен "{expected_text}"')
 def check_issue_title(browser, expected_text):
-    issue_title = WebDriverWait(browser, 10).until(
+    issue_title = WebDriverWait(browser, 20).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, '[data-testid="issue-pr-title-link"]'))
     )
     assert issue_title.text == expected_text, f'Ожидали: {expected_text}, получили: {issue_title.text}'
