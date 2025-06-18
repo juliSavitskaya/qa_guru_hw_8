@@ -31,3 +31,5 @@ def pytest_exception_interact(node, call, report):
         driver.save_screenshot("artifact.png")
         with open("artifact.html", "w", encoding="utf8") as f:
             f.write(driver.page_source)
+
+    yield
