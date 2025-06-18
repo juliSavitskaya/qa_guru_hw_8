@@ -22,3 +22,12 @@ def browser():
     yield driver
 
     driver.quit()
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_exception_interact(node, call, report):
+    driver = node.funcargs.get('browser')
+    if driver:
+        driver.save_screenshot("artifact.png")
+        with open("artifact.html", "w", encoding="utf8") as f:
+            f.write(driver.page_source)
